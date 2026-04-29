@@ -52,3 +52,7 @@ Unitree Go1 Ubuntu system
 slamware_ros_sdk_server_node publishes /scan
     ↓
 this project subscribes to /scan and runs SLAM
+
+
+
+碎碎念一下：往哪拜才能让你在上机的时候丝滑运行，人为什么要在没有真机的时候写上机代码，上机环境怎么能没有网，gpt你看看训练出来的兵，竟无人会古法编程哈哈哈哈哈哈，还有你个小米wifi能不能不要老断了，那个薛定谔的雷达能不能别时好时坏了，最朴素的解决方法竟然是拔USB我真是服了，再写就要疯了哈哈哈哈哈哈哈哈
