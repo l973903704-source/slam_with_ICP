@@ -1,22 +1,54 @@
 # slamware_loop_slam_project
 
-这是一个面向 **ROS1 Melodic + Python2.7 + Slamtec Slamware ROS SDK** 的 2D 激光 SLAM 课程项目。
+This is a 2D LiDAR SLAM course project designed for **ROS1 Melodic + Python 2.7 + Slamtec Slamware ROS SDK**.
 
-项目目标：
-- 直接订阅 `slamware_ros_sdk_server_node` 发布的 `/scan`
-- 实现 **scan-to-scan ICP 前端**
-- 在此前端基础上加入 **关键帧、回环检测、位姿图优化**
-- 将轨迹、回环边、优化结果、绘图结果统一保存到项目内的 `result/` 文件夹
+## Project Goal
 
-建议先看：
+The goal of this project is to build a complete 2D SLAM pipeline based on the LiDAR data provided by the Slamware ROS SDK.
+
+Main functions include:
+
+- Directly subscribe to the `/scan` topic published by `slamware_ros_sdk_server_node`
+- Implement a **scan-to-scan ICP front-end**
+- Add **keyframes, loop closure detection, and pose graph optimization** based on the ICP front-end
+- Save the trajectory, loop closure edges, optimized results, and plotting results into the project-level `result/` folder
+
+## Recommended Documents
+
+Please read the following documents first:
+
 - `上机步骤.md`
 - `代码功能说明.md`
 - `README_上机步骤.md`
 - `README_代码说明.md`
 - `离线依赖清单.txt`
 
-断网上机前，Python2 离线 pip 包已经放在：
+## Running Environment
+
+This project is intended to run on the **Unitree Go1 robot** with an Ubuntu-based ROS environment.
+
+The main running environment is:
+
+- Robot platform: **Unitree Go1**
+- Operating system: **Ubuntu with ROS1 Melodic**
+- ROS version: **ROS1 Melodic**
+- Python version: **Python 2.7**
+- LiDAR SDK: **Slamtec Slamware ROS SDK**
+- LiDAR data source: `/scan` topic from `slamware_ros_sdk_server_node`
+
+The SLAM algorithm, LiDAR topic subscription, ICP front-end, loop closure detection, and pose graph optimization are all executed inside the Go1 robot’s Ubuntu system.
+
+## Remote Connection Method
+
+During the experiment, I used a **Windows laptop** to remotely connect to the Unitree Go1 robot.
+
+The general workflow is:
 
 ```text
-offline_deps/python2_pip/packages
-```
+Windows laptop
+    ↓ remote connection
+Unitree Go1 Ubuntu system
+    ↓ run ROS and Slamware SDK
+slamware_ros_sdk_server_node publishes /scan
+    ↓
+this project subscribes to /scan and runs SLAM
