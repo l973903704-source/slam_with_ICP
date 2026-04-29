@@ -1,0 +1,16 @@
+<launch>
+  <arg name="ip_address" default="192.168.31.11" />
+  <arg name="scan_topic" default="/scan" />
+  <arg name="save_csv" default="true" />
+  <arg name="csv_prefix" default="$(find slamware_loop_slam)/result/pose_graph" />
+
+  <include file="$(find slamware_ros_sdk)/launch/slamware_ros_sdk_server_node.launch">
+    <arg name="ip_address" value="$(arg ip_address)" />
+  </include>
+
+  <include file="$(find slamware_loop_slam)/launch/pose_graph_slam.launch">
+    <arg name="scan_topic" value="$(arg scan_topic)" />
+    <arg name="save_csv" value="$(arg save_csv)" />
+    <arg name="csv_prefix" value="$(arg csv_prefix)" />
+  </include>
+</launch>

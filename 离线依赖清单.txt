@@ -1,0 +1,106 @@
+本项目面向：Ubuntu 18.04 / ROS1 Melodic / Python2.7 / Slamware ROS SDK 2.8.2_rtm
+
+==============================
+一、必须已有的 ROS 环境
+==============================
+1. ros-melodic-ros-base 或 ros-melodic-desktop-full
+2. slamware_ros_sdk，并能运行：
+   roslaunch slamware_ros_sdk view_slamware_ros_sdk_server_node.launch
+3. RViz。如果要按官方方式观察雷达和地图，需要 RViz 可用。
+
+ROS 相关包不是普通 pip 包，不能只靠 pip 安装：
+- rospy
+- tf
+- sensor_msgs
+- geometry_msgs
+- nav_msgs
+- std_msgs
+
+==============================
+二、本项目已准备好的 Python2 离线 pip 包
+==============================
+离线包目录：
+offline_deps/python2_pip/packages
+
+已放入的包：
+- pip==20.3.4
+- setuptools==44.1.1
+- wheel==0.37.1
+- numpy==1.16.6
+- scipy==1.2.3
+- matplotlib==2.2.5
+- rospkg==1.4.0
+- catkin_pkg==0.4.24
+- PyYAML==5.4.1
+- empy==3.3.4
+- distro==1.5.0
+- docutils==0.16
+- python-dateutil==2.8.2
+- pyparsing==2.4.7
+- packaging==20.9
+- six==1.16.0
+- pytz==2021.3
+- cycler==0.10.0
+- kiwisolver==1.1.0
+- backports.functools-lru-cache==1.6.6
+- subprocess32==3.5.4
+
+在 Go1 上离线安装：
+
+```bash
+cd ~/slamware_loop_slam_project/offline_deps/python2_pip
+bash install_offline_python2_deps.sh
+```
+
+如果没有 python2 pip，先离线安装 Ubuntu 包：
+- python-pip
+- python-setuptools
+- python-wheel
+
+==============================
+三、建议提前准备的 apt/deb 包
+==============================
+这些包建议在有网环境下载成 .deb，带到实验室：
+- python-numpy
+- python-scipy
+- python-matplotlib
+- python-rospkg
+- python-catkin-pkg
+- python-yaml
+- python-empy
+- python-dateutil
+- python-docutils
+- python-pyparsing
+- python-packaging
+- python-distro
+- python-setuptools
+- python-pip
+- build-essential
+- python-dev
+
+如果 pip 源码包安装失败，优先用 apt/deb 安装对应 Python2 包。
+
+==============================
+四、编译工具
+==============================
+- catkin
+- catkin_make
+- cmake
+- make
+
+==============================
+五、现场最常见缺包处理
+==============================
+报错：No module named rospkg
+优先补：
+- python-rospkg
+- python-catkin-pkg
+- python-yaml
+
+报错：No module named scipy 或 numpy
+优先补：
+- python-numpy
+- python-scipy
+
+报错：matplotlib 导入失败
+不影响 SLAM 实时运行，只影响 `tools/plot_results.py` 画图。

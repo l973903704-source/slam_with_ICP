@@ -1,0 +1,24 @@
+<launch>
+  <arg name="config_file" default="$(find slamware_loop_slam)/config/pose_graph_slam_params.yaml" />
+  <arg name="scan_topic" default="/scan" />
+  <arg name="local_pose_topic" default="/slamware_local_pose" />
+  <arg name="local_path_topic" default="/slamware_local_path" />
+  <arg name="optimized_pose_topic" default="/slamware_pg_pose" />
+  <arg name="optimized_path_topic" default="/slamware_pg_path" />
+  <arg name="save_csv" default="true" />
+  <arg name="csv_prefix" default="$(find slamware_loop_slam)/result/pose_graph" />
+
+  <node pkg="slamware_loop_slam"
+        type="pose_graph_slam_node.py"
+        name="pose_graph_slam_node"
+        output="screen">
+    <rosparam command="load" file="$(arg config_file)" />
+    <param name="scan_topic" value="$(arg scan_topic)" />
+    <param name="local_pose_topic" value="$(arg local_pose_topic)" />
+    <param name="local_path_topic" value="$(arg local_path_topic)" />
+    <param name="optimized_pose_topic" value="$(arg optimized_pose_topic)" />
+    <param name="optimized_path_topic" value="$(arg optimized_path_topic)" />
+    <param name="save_csv" value="$(arg save_csv)" />
+    <param name="csv_prefix" value="$(arg csv_prefix)" />
+  </node>
+</launch>

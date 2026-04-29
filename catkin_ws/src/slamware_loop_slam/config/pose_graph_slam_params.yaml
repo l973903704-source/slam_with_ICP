@@ -1,0 +1,58 @@
+# Slamware /scan 输入的回环版参数
+scan_topic: /scan
+local_pose_topic: /slamware_local_pose
+local_path_topic: /slamware_local_path
+optimized_pose_topic: /slamware_pg_pose
+optimized_path_topic: /slamware_pg_path
+
+frame_id: map
+local_child_frame_id: slamware_local_base_link
+optimized_child_frame_id: slamware_pg_base_link
+
+min_range: 0.10
+max_range: 40.0
+downsample_step: 2
+min_points: 50
+
+max_iterations: 40
+tolerance: 1.0e-5
+max_correspondence_distance: 0.60
+trim_percentile: 85.0
+min_correspondences: 30
+use_centroid_init: false
+max_icp_error: 0.30
+max_step_translation: 0.60
+max_step_rotation_deg: 35.0
+max_consecutive_rejects: 5
+invert_icp_result: true
+
+publish_tf: false
+publish_optimized_tf: false
+save_csv: true
+csv_prefix: result/pose_graph
+log_scan_info_once: true
+path_publish_step: 1
+max_path_poses: 3000
+csv_flush_interval: 20
+
+keyframe_translation_thresh: 0.30
+keyframe_rotation_thresh_deg: 15.0
+
+loop_min_index_gap: 12
+loop_candidate_distance: 2.00
+loop_descriptor_bins: 24
+loop_descriptor_threshold: 0.45
+loop_icp_error_threshold: 0.25
+loop_max_correspondence_distance: 0.80
+loop_max_measurement_translation: 1.50
+loop_max_measurement_rotation_deg: 60.0
+loop_max_candidates: 3
+
+optimize_every_n_keyframes: 5
+optimize_on_loop_only: true
+max_optimizer_nfev: 80
+
+odom_edge_weight_xy: 10.0
+odom_edge_weight_theta: 15.0
+loop_edge_weight_xy: 20.0
+loop_edge_weight_theta: 25.0

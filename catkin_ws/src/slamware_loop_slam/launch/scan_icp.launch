@@ -1,0 +1,22 @@
+<launch>
+  <arg name="config_file" default="$(find slamware_loop_slam)/config/scan_icp_params.yaml" />
+  <arg name="scan_topic" default="/scan" />
+  <arg name="pose_topic" default="/slamware_icp_pose" />
+  <arg name="path_topic" default="/slamware_icp_path" />
+  <arg name="publish_tf" default="false" />
+  <arg name="save_csv" default="true" />
+  <arg name="csv_path" default="$(find slamware_loop_slam)/result/no_loop_path.csv" />
+
+  <node pkg="slamware_loop_slam"
+        type="scan_icp_node.py"
+        name="scan_icp_node"
+        output="screen">
+    <rosparam command="load" file="$(arg config_file)" />
+    <param name="scan_topic" value="$(arg scan_topic)" />
+    <param name="pose_topic" value="$(arg pose_topic)" />
+    <param name="path_topic" value="$(arg path_topic)" />
+    <param name="publish_tf" value="$(arg publish_tf)" />
+    <param name="save_csv" value="$(arg save_csv)" />
+    <param name="csv_path" value="$(arg csv_path)" />
+  </node>
+</launch>

@@ -1,0 +1,31 @@
+# Slamware /scan 输入的无回环 ICP 前端参数
+scan_topic: /scan
+pose_topic: /slamware_icp_pose
+path_topic: /slamware_icp_path
+frame_id: map
+child_frame_id: slamware_icp_base_link
+
+min_range: 0.10
+max_range: 40.0
+downsample_step: 2
+min_points: 50
+
+max_iterations: 40
+tolerance: 1.0e-5
+max_correspondence_distance: 0.60
+trim_percentile: 85.0
+min_correspondences: 30
+use_centroid_init: false
+max_icp_error: 0.30
+max_step_translation: 0.60
+max_step_rotation_deg: 35.0
+max_consecutive_rejects: 5
+invert_icp_result: true
+
+publish_tf: false
+save_csv: true
+csv_path: result/no_loop_path.csv
+log_scan_info_once: true
+path_publish_step: 1
+max_path_poses: 3000
+csv_flush_interval: 20
