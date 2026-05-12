@@ -71,4 +71,6 @@ this project subscribes to /scan and runs SLAM
 gpt你看看你训练出来的兵，竟无人会古法编程哈哈哈哈哈哈，<br>
 还有你个小米wifi能不能不要老断了，那个薛定谔的雷达能不能别时好时坏了，<br>
 最朴素的解决方法竟然是拔USB我真是服了（绝望研究生belike）<br>
+
+2026/5/12补充：别看了姐妹，这版没运行成功，该死的python，还是玩c++去吧
 </details>
